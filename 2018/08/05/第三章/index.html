@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MATLAB学习笔记 8.5.2018数值数组及向量化运算 变量命名：必须以字母开头， 后面可以是字母、数字、下划线的组合。变量不需要事先定义，自动建立  固定变量：  ans——没有定义变量名时，系统默认变量名为ans。 eps——容许误差，用于决定奇异性和秩的时候 pi——圆周率 inf——无穷大 NaN——不定值   表达式：行末加；抑制结果的显示，行末加。。。表示下行为续行，每行最多409">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/08/05/第三章/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MATLAB学习笔记 8.5.2018数值数组及向量化运算 变量命名：必须以字母开头， 后面可以是字母、数字、下划线的组合。变量不需要事先定义，自动建立  固定变量：  ans——没有定义变量名时，系统默认变量名为ans。 eps——容许误差，用于决定奇异性和秩的时候 pi——圆周率 inf——无穷大 NaN——不定值   表达式：行末加；抑制结果的显示，行末加。。。表示下行为续行，每行最多409">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-05T14:20:42.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="MATLAB学习笔记 8.5.2018数值数组及向量化运算 变量命名：必须以字母开头， 后面可以是字母、数字、下划线的组合。变量不需要事先定义，自动建立  固定变量：  ans——没有定义变量名时，系统默认变量名为ans。 eps——容许误差，用于决定奇异性和秩的时候 pi——圆周率 inf——无穷大 NaN——不定值   表达式：行末加；抑制结果的显示，行末加。。。表示下行为续行，每行最多409">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-第三章" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/05/第三章/" class="article-date">
+  <time datetime="2018-08-05T03:00:23.572Z" itemprop="datePublished">2018-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MATLAB学习笔记-8-5-2018"><a href="#MATLAB学习笔记-8-5-2018" class="headerlink" title="MATLAB学习笔记 8.5.2018"></a>MATLAB学习笔记 8.5.2018</h1><h2 id="数值数组及向量化运算"><a href="#数值数组及向量化运算" class="headerlink" title="数值数组及向量化运算"></a>数值数组及向量化运算</h2><ul>
+<li><p>变量命名：必须以字母开头， 后面可以是字母、数字、下划线的组合。变量不需要事先定义，自动建立</p>
+</li>
+<li><p>固定变量：</p>
+<ul>
+<li>ans——没有定义变量名时，系统默认变量名为ans。</li>
+<li>eps——容许误差，用于决定奇异性和秩的时候</li>
+<li>pi——圆周率</li>
+<li>inf——无穷大</li>
+<li>NaN——不定值</li>
+</ul>
+</li>
+<li><p>表达式：行末加；抑制结果的显示，行末加。。。表示下行为续行，每行最多4096个字符</p>
+</li>
+<li><p>MATLAB基本的运算单元是矩阵和向量，M语言本身就是以向量化运算为基础的编程语言。</p>
+</li>
+<li><p>MATLAB中的数组运算： 无论对数组施加什么运算，总认为是对数组中每个元素平等的实施同样的操作。</p>
+<ul>
+<li><p>例：绘制函数图像：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">0</span>:<span class="number">0.1</span>:<span class="number">1</span>; <span class="comment">% 定义自变量数组：以0为起点步长0.1取点到1</span></span><br><span class="line">y = x.*<span class="built_in">exp</span>(-x) <span class="comment">% 利用数组运算计算各自变量采样点上的函数值</span></span><br><span class="line">plot(x, y), xlabel(<span class="string">'x'</span>), ylabel(<span class="string">'y'</span>), title(<span class="string">'y = x*exp(-x)'</span>) <span class="comment">% 绘图</span></span><br></pre></td></tr></table></figure>
+<p>注：连续函数必须在相应的区间上采样才能进行数值计算</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数值数组的创建和寻访"><a href="#数值数组的创建和寻访" class="headerlink" title="数值数组的创建和寻访"></a>数值数组的创建和寻访</h2><ul>
+<li>创建：</li>
+</ul>
+<ol>
+<li><p>逐个输入元素的方法</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span> <span class="number">3</span> pi <span class="number">3</span>+<span class="number">5</span>i]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用冒号运算符创建向量：X = J:INC:K J为向量的第一个元素，INC为步长，K为向量的最后一个元素，三者必须以：间隔。</p>
+<ul>
+<li>其中步长值缺省时默认为1</li>
+</ul>
+</li>
+<li><p>函数：</p>
+<ul>
+<li><p>logspace用来创建对数空间向量的函数</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">logspace</span>(x1, x2, n) <span class="comment">% n的缺省值为50</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>linspace 为用来创建线性间隔向量的函数</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">linspace</span>(x1, x2, n) <span class="comment">% x1为第一个元素， x2为最后一个元素， n为元素个数，缺省默认为100</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="二维数组（矩阵）的创建与访问"><a href="#二维数组（矩阵）的创建与访问" class="headerlink" title="二维数组（矩阵）的创建与访问"></a>二维数组（矩阵）的创建与访问</h2><ul>
+<li><p>直接输入： 整个矩阵元素输入在[]中，行中的元素通过逗号或者空格间隔，行间通过分号或回车间隔。</p>
+</li>
+<li><p>访问相应元素的索引即可访问相应元素</p>
+</li>
+<li><p>访问向量元素的结果是创建了新的向量</p>
+</li>
+<li><p>end代表向量中最后一个元素符号</p>
+</li>
+<li><p><strong>对数组中不存在的元素赋值后将自动创建这些元素并给没有明确赋初值的元素赋值为0</strong></p>
+</li>
+<li><p>矩阵元素的访问：</p>
+<ul>
+<li>A(i, j)——第i行j列的元素（i、j为标量）</li>
+<li>A(I, J)——向量I和J指定的矩阵A中的元素</li>
+<li>A(i, :)——访问矩阵第i行的所有元素</li>
+<li>A(:, j)——访问矩阵第j列的所有元素</li>
+<li>A(:)——访问矩阵A的所有元素，将矩阵看作一个向量</li>
+<li>A(l)——使用单下标的方式访问矩阵元素，l为标量（注意按列优先填充！）</li>
+<li>A(L)——访问由向量L指定的矩阵A的元素，L中的元素为矩阵的单下标值</li>
+</ul>
+</li>
+<li><p>矩阵元素的创建：</p>
+<ul>
+<li>zeros——全0矩阵</li>
+<li>ones——全1矩阵</li>
+<li>eye——单位阵</li>
+<li>rand——均匀分布的随机数矩阵，数值范围（0，1）</li>
+<li>randn——均值为0，方差为1的正态分布随机数矩阵</li>
+<li>diag（v，k）——获取对角线元素，可产生对角矩阵，v为n元向量，处于主对角线，k表示v的元素处在第k条对角线上，k&gt;0为在主对角线上</li>
+<li>tril——下三角</li>
+<li>triu——上三角</li>
+<li>pascal——帕斯卡矩阵</li>
+<li>magic——幻方阵</li>
+</ul>
+</li>
+<li><p>矩阵元素的操作：</p>
+<ul>
+<li><p>reshape(A, m, n)——把A重新排列成m x n的矩阵 </p>
+<p><strong>注意矩阵元素按列存储  </strong></p>
+</li>
+<li><p>rot 90（A, k）矩阵逆时针旋转90*k</p>
+</li>
+<li><p>fliplr——左右翻转列</p>
+</li>
+<li><p>flipud——上下翻转行</p>
+</li>
+<li><p>tril——下三角</p>
+</li>
+<li><p>triu——上三角</p>
+</li>
+<li><p>cat（dim，A，B）——将A，B在dim维连接起来</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="非数NaN与空数组"><a href="#非数NaN与空数组" class="headerlink" title="非数NaN与空数组"></a>非数NaN与空数组</h2><ul>
+<li>非数：IEEE规定0/0，∞x∞，0 x ∞都会产生非数，有传递性，不能比较大小</li>
+</ul>
+<h2 id="关系操作和逻辑操作"><a href="#关系操作和逻辑操作" class="headerlink" title="关系操作和逻辑操作"></a>关系操作和逻辑操作</h2><ul>
+<li>所有非零值为逻辑1，零值为逻辑0<ul>
+<li>logical——将任意类型的数组转变成逻辑类型数组，非零值为真，零元素为假</li>
+<li>True——产生逻辑真值数组</li>
+<li>False——产生逻辑假值数组</li>
+</ul>
+</li>
+<li>逻辑运算符：<ul>
+<li>&amp;——逻辑与</li>
+<li>|——逻辑或</li>
+<li>～——逻辑非</li>
+<li>xor——异或</li>
+</ul>
+</li>
+<li>逻辑函数<ul>
+<li>all——矩阵所有元素是否非零，都非0返回1有一个或多个0返回0</li>
+<li>any——测试任意非零值，所有均为0则返回0，只要有一个不是0就返回1</li>
+<li>find——查找非零元素的值和下标（注意阵列中与矩阵中返回的数量不同）</li>
+<li>exist——检查给定的变量或文件是否存在</li>
+</ul>
+</li>
+<li>关系运算<ul>
+<li>==——等于</li>
+<li>～=——不等于</li>
+</ul>
+</li>
+</ul>
+<h1 id="breakpoint：多维数组、非数的访问、逻辑运算"><a href="#breakpoint：多维数组、非数的访问、逻辑运算" class="headerlink" title="breakpoint：多维数组、非数的访问、逻辑运算"></a>breakpoint：多维数组、非数的访问、逻辑运算</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/05/第三章/" data-id="cjkgxqq8m0000u4n6qr0777zx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/06/电赛/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">电赛</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/05/第三章/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/06/电赛/">电赛</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/28/利用hexo搭建博客的各种坑/">利用hexo搭建博客的各种坑</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/27/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
