@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: MATLAB学习笔记 6.8.2018date: 2018-06-06 15:37:08tags: MATLAB学习笔记 6.8.2018 解线性方程组：采用类似数量除法的方法来描述一般的线性方程组的解。 系数矩阵为m行n列矩阵 m=n：方阵，可求的精确解。 m&amp;gt;n：过限定系统，可求出一个最小方阵的解。 m&amp;lt;n：限定不足系统，可求出一个至多含有m个非零元素的基解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/08/06/MATLAB学习笔记 6.8.2018/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: MATLAB学习笔记 6.8.2018date: 2018-06-06 15:37:08tags: MATLAB学习笔记 6.8.2018 解线性方程组：采用类似数量除法的方法来描述一般的线性方程组的解。 系数矩阵为m行n列矩阵 m=n：方阵，可求的精确解。 m&amp;gt;n：过限定系统，可求出一个最小方阵的解。 m&amp;lt;n：限定不足系统，可求出一个至多含有m个非零元素的基解。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-06T06:44:53.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title: MATLAB学习笔记 6.8.2018date: 2018-06-06 15:37:08tags: MATLAB学习笔记 6.8.2018 解线性方程组：采用类似数量除法的方法来描述一般的线性方程组的解。 系数矩阵为m行n列矩阵 m=n：方阵，可求的精确解。 m&amp;gt;n：过限定系统，可求出一个最小方阵的解。 m&amp;lt;n：限定不足系统，可求出一个至多含有m个非零元素的基解。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-MATLAB学习笔记 6.8.2018" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/06/MATLAB学习笔记 6.8.2018/" class="article-date">
+  <time datetime="2018-08-06T06:42:18.919Z" itemprop="datePublished">2018-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: MATLAB学习笔记 6.8.2018<br>date: 2018-06-06 15:37:08<br>tags:</p>
+<h1 id="MATLAB学习笔记-6-8-2018"><a href="#MATLAB学习笔记-6-8-2018" class="headerlink" title="MATLAB学习笔记 6.8.2018"></a>MATLAB学习笔记 6.8.2018</h1><ul>
+<li>解线性方程组：采用类似数量除法的方法来描述一般的线性方程组的解。</li>
+<li>系数矩阵为m行n列矩阵<ul>
+<li>m=n：方阵，可求的精确解。</li>
+<li>m&gt;n：过限定系统，可求出一个最小方阵的解。</li>
+<li>m&lt;n：限定不足系统，可求出一个至多含有m个非零元素的基解。</li>
+</ul>
+</li>
+</ul>
+<h2 id="曲线拟合"><a href="#曲线拟合" class="headerlink" title="曲线拟合"></a>曲线拟合</h2><ul>
+<li>回归法拟合</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">t = [<span class="number">0</span>, <span class="number">0.3</span>, <span class="number">0.8</span>, <span class="number">1.1</span>, <span class="number">1.6</span>, <span class="number">2.3</span>]</span><br><span class="line">y = [<span class="number">0.5</span>, <span class="number">0.82</span>, <span class="number">1.14</span>, <span class="number">1.25</span>, <span class="number">1.35</span>, <span class="number">1.40</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">% 采用多项式y = a0 + a1t + a2t^2</span></span><br><span class="line">x = [ones(size(t)) t t.^<span class="number">2</span>]</span><br><span class="line">a = x\Y</span><br><span class="line"><span class="comment">% 得到拟合的系数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 采用一个带有线性参数的指数函数y=a0 + a1e-t + a2te-t</span></span><br><span class="line">x = [ones(size(t)) exp(-t) t.*exp(-t)];</span><br><span class="line">a = x\Y</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>多项式曲线拟合：根据一组已知的自变量与函数值，应用最小二乘法求出多项式的拟合曲线polyfit</p>
+<p><strong>polyfit(x, y, n) x为已知自变量的取值 y为相应的函数值 n为多项式的次数 </strong></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">0</span>:<span class="number">.1</span>:<span class="number">10</span>; <span class="comment">% 准备原始数据</span></span><br><span class="line">y = <span class="built_in">sin</span>(x) + <span class="built_in">cos</span>(<span class="number">2</span>*x);</span><br><span class="line"><span class="comment">% 五次多项式拟合</span></span><br><span class="line">k5 = polyfit(x, y, <span class="number">5</span>);</span><br><span class="line">y5 = polyval(k5, x);</span><br><span class="line"><span class="comment">% 十一次多项式拟合</span></span><br><span class="line">k11 = polyfit(x, y, <span class="number">11</span>);</span><br><span class="line">y11 = polyval(k11, x);</span><br><span class="line"><span class="comment">%绘制函数图像</span></span><br><span class="line">plot(x, y, <span class="string">'g'</span>,x, y5, <span class="string">'r'</span>,x, y11, <span class="string">'b'</span>);</span><br><span class="line">title(<span class="string">'Curve Fitting'</span>,<span class="string">'Fontsize'</span>,<span class="number">14</span>);</span><br><span class="line">legend(<span class="string">'Original Curve'</span>, <span class="string">'5th order'</span>, <span class="string">'11th order'</span>, <span class="number">4</span>)</span><br><span class="line">set(findobj(<span class="string">'Type'</span>, <span class="string">'line'</span>), <span class="string">'LineWidth'</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="数据插值"><a href="#数据插值" class="headerlink" title="数据插值"></a>数据插值</h2><p><strong>差值就是在已知数据中寻找估计值 </strong></p>
+<ul>
+<li>函数：<ul>
+<li>Interp1——一维插值</li>
+<li>interp1q——一维快速插值</li>
+<li>interp2——二维插值</li>
+<li>interp3——三维插值</li>
+<li>interpn——n维插值</li>
+<li>interpft——使用FFT算法的一维插值</li>
+<li>griddata——二维数据网格的表面数据插值</li>
+<li>griddata3——三维数据网格的超表面数据插值</li>
+<li>griddatan——多维数据网格的超表面数据插值</li>
+<li>mkpp——产生分段多项式</li>
+<li>pchip——分段的厄秘多项式</li>
+<li>ppval——计算分段多项式的值</li>
+<li>spline——三次样条插值</li>
+<li>unmkpp——分段多项式细节</li>
+</ul>
+</li>
+<li>格式： <strong>yi = interpl(x, y, xi, method) </strong></li>
+</ul>
+<p>xi表示用于计算插值的点 method可以为插值计算指定的算法，取值有：nearest、linear、spline、cubic、pchip、v5cubic</p>
+<ul>
+<li>插值方法：<ul>
+<li>临近插值：在已知数据最邻近的点设置插值</li>
+<li>线性插值：在已知的成对数据点与离散函数之间进行拟合，返回xi指定的相应的数值</li>
+<li>三次样条插值：采用一个三次函数对已知数据进行拟合，返回xi的函数值</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 准备数据</span></span><br><span class="line">x = <span class="number">0</span>:<span class="number">10</span>;</span><br><span class="line">y = <span class="built_in">cos</span>(x);</span><br><span class="line"><span class="comment">% 插值点</span></span><br><span class="line">xi = <span class="number">0</span>:<span class="number">0.2</span>:<span class="number">10</span>;</span><br><span class="line"><span class="comment">% 插值运算</span></span><br><span class="line">yin = interp1(x, y, xi, <span class="string">'nearest'</span>);</span><br><span class="line">yic = interp1(x, y, xi, <span class="string">'cubic'</span>);</span><br><span class="line"><span class="comment">% 绘制结果</span></span><br><span class="line">plot(x, y, <span class="string">'o'</span>, xi, yin,<span class="string">'*'</span>, xi, yic)</span><br><span class="line">legend(<span class="string">'origin'</span>,<span class="string">'nearest'</span>,<span class="string">'cubic'</span>)</span><br><span class="line">title(<span class="string">'一维插值示例'</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/06/MATLAB学习笔记 6.8.2018/" data-id="cjkhwvslk00005cn6vbox8na7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/05/第三章/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/06/MATLAB学习笔记 6.8.2018/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/05/第三章/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/06/电赛/">电赛</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/28/利用hexo搭建博客的各种坑/">利用hexo搭建博客的各种坑</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/27/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
